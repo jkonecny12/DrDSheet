@@ -24,7 +24,7 @@ Item {
             width: parent.width
             height: 35
 
-            Text {
+            Label {
                 text: name
             }
 

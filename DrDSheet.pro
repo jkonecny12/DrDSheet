@@ -2,7 +2,11 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp
+CONFIG += c++11
+
+SOURCES += main.cpp \
+    src/Storage/character.cpp \
+    src/Utils/qmlregistrar.cpp
 
 RESOURCES += qml.qrc
 
@@ -13,3 +17,7 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 OTHER_FILES +=
+
+HEADERS += \
+    src/Storage/character.h \
+    src/Utils/qmlregistrar.h
