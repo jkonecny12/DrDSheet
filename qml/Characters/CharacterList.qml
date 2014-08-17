@@ -15,6 +15,8 @@ Item {
 
         anchors.fill: parent
 
+        focus: true
+
         model: CharactersManager.model
         delegate: characterDelegate
     }
@@ -22,34 +24,30 @@ Item {
     Component {
         id: characterDelegate
 
-        Item {
+        Rectangle {
+            id: delegateRoot
 
             width: parent.width
-            height: 35
+            height: delegateRoot.ListView.isCurrentItem ? 70 : 40
+
+            color: "transparent"
+            border.color: "black"
+
+            MouseArea {
+                id: itemMouseArea
+
+                anchors.fill: parent
+
+                onClicked: {
+                    charactersView.currentIndex = index
+                }
+            }
 
             Label {
                 text: name
+                color: delegateRoot.ListView.isCurrentItem ? "white" : "red"
             }
 
-        }
-    }
-
-
-    ListModel {
-        id: charactersModel
-
-        ListElement {
-            name: "BigBrother"
-            //class: "wtf"
-
-        }
-
-        ListElement {
-            name: "test"
-        }
-
-        ListElement {
-            name: "test2"
         }
     }
 }
