@@ -6,7 +6,9 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     src/Storage/character.cpp \
-    src/Utils/qmlregistrar.cpp
+    src/Models/charactersmodel.cpp \
+    src/Managers/charactersmanager.cpp \
+    src/Utils/drdsheetmain.cpp
 
 RESOURCES += qml.qrc
 
@@ -20,4 +22,6 @@ OTHER_FILES +=
 
 HEADERS += \
     src/Storage/character.h \
-    src/Utils/qmlregistrar.h
+    src/Models/charactersmodel.h \
+    src/Managers/charactersmanager.h \
+    src/Utils/drdsheetmain.h
