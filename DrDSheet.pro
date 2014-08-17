@@ -8,7 +8,7 @@ SOURCES += main.cpp \
     src/Storage/character.cpp \
     src/Models/charactersmodel.cpp \
     src/Managers/charactersmanager.cpp \
-    src/Utils/drdsheetmain.cpp
+    src/drdsheetmain.cpp
 
 RESOURCES += qml.qrc
 
@@ -24,4 +24,4 @@ HEADERS += \
     src/Storage/character.h \
     src/Models/charactersmodel.h \
     src/Managers/charactersmanager.h \
-    src/Utils/drdsheetmain.h
+    src/drdsheetmain.h

@@ -15,7 +15,7 @@ class CharactersManager : public QObject
 public:
     virtual ~CharactersManager();
 
-    static CharactersManager const *instance();
+    static CharactersManager *instance();
     static void dropInstance();
 
     CharactersModel *model() const;

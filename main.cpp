@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "src/Utils/qmlregistrar.h"
+#include "src/drdsheetmain.h"
 
 int main(int argc, char *argv[])
 {

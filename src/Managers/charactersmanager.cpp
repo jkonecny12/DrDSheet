@@ -28,7 +28,7 @@ CharactersManager::~CharactersManager()
 
 }
 
-const CharactersManager *CharactersManager::instance()
+CharactersManager *CharactersManager::instance()
 {
     static QMutex mutex;
 

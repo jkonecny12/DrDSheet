@@ -1,6 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
 
+import cz.ps.Models 1.0
+import cz.ps.Managers 1.0
+
 // TODO: complete this
 
 
@@ -12,7 +15,7 @@ Item {
 
         anchors.fill: parent
 
-        model: charactersModel
+        model: CharactersManager.model
         delegate: characterDelegate
     }
 
