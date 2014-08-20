@@ -34,24 +34,30 @@ Window {
             bottom: parent.bottom
         }
 
-        height: 25
+        height: 50
 
         Button {
             id: createNew
 
             text: qsTr("Vytvořit")
+
+            Layout.fillWidth: true
         }
 
         Button {
             id: modifyNew
 
             text: qsTr("Upravit")
+
+            Layout.fillWidth: true
         }
 
         Button {
             id: deleteNew
 
             text: qsTr("Smazat")
+
+            Layout.fillWidth: true
         }
     }
 
