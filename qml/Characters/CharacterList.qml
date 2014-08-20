@@ -30,10 +30,6 @@ Item {
         Rectangle {
             id: delegateRoot
 
-            anchors {
-                margins: 3
-            }
-
             width: parent.width
             height: delegateRoot.ListView.isCurrentItem ? 150 : 40
 
@@ -53,6 +49,8 @@ Item {
             Column {
                 anchors.top: parent.top
                 anchors.left: parent.left
+                anchors.leftMargin: 3
+                anchors.topMargin: 3
 
                 Label {
                     id: nameLabel
@@ -72,6 +70,8 @@ Item {
             Column {
                 anchors.top: parent.top
                 anchors.right: parent.right
+                anchors.rightMargin: 3
+                anchors.topMargin: 3
 
                 Label {
                     id: classLabel
