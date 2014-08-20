@@ -1,10 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
+import QtQuick.Layouts 1.1
 
 import cz.ps.Models 1.0
 import cz.ps.Managers 1.0
-
-// TODO: complete this
 
 
 Item {
@@ -28,7 +27,7 @@ Item {
             id: delegateRoot
 
             width: parent.width
-            height: delegateRoot.ListView.isCurrentItem ? 70 : 40
+            height: delegateRoot.ListView.isCurrentItem ? 150 : 40
 
             color: "transparent"
             border.color: "black"
@@ -44,8 +43,21 @@ Item {
             }
 
             Label {
+                id: nameLabel
+
+                anchors.top: parent.top
+                anchors.left: parent.left
+
                 text: name
-                color: delegateRoot.ListView.isCurrentItem ? "white" : "red"
+            }
+
+            Label {
+                id: classLabel
+
+                anchors.top: parent.top
+                anchors.right: parent.right
+
+                text: characterClass
             }
 
         }

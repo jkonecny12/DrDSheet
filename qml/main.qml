@@ -1,6 +1,7 @@
 import QtQuick 2.2
 import QtQuick.Window 2.1
 import QtQuick.Controls 1.2
+import QtQuick.Layouts 1.1
 
 import "./Characters"
 
@@ -17,17 +18,15 @@ Window {
 
         anchors {
             top: parent.top
-            bottom: addCharacterBtn.top
+            bottom: buttonsLayout.top
             left: parent.left
             right: parent.right
         }
 
     }
 
-    Button {
-        id: addCharacterBtn
-
-        height: 30
+    RowLayout {
+        id: buttonsLayout
 
         anchors {
             left: parent.left
@@ -35,7 +34,25 @@ Window {
             bottom: parent.bottom
         }
 
-        text: "Add character"
+        height: 25
+
+        Button {
+            id: createNew
+
+            text: qsTr("Vytvořit")
+        }
+
+        Button {
+            id: modifyNew
+
+            text: qsTr("Upravit")
+        }
+
+        Button {
+            id: deleteNew
+
+            text: qsTr("Smazat")
+        }
     }
 
 }
