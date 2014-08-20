@@ -63,6 +63,11 @@ public:
     Class charClass() const;
     void setCharClass(Class charClass);
 
+    /** translators **/
+    Q_INVOKABLE QString raceToString(Race race);
+    Q_INVOKABLE QString sexToString(Sex sex);
+    Q_INVOKABLE QString classToString(Class charClass);
+
 signals:
     void nameChanged();
     void raceChanged();

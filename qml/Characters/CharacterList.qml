@@ -20,11 +20,19 @@ Item {
         delegate: characterDelegate
     }
 
+    Character {
+        id: characterTranslator
+    }
+
     Component {
         id: characterDelegate
 
         Rectangle {
             id: delegateRoot
+
+            anchors {
+                margins: 3
+            }
 
             width: parent.width
             height: delegateRoot.ListView.isCurrentItem ? 150 : 40
@@ -42,24 +50,43 @@ Item {
                 }
             }
 
-            Label {
-                id: nameLabel
-
+            Column {
                 anchors.top: parent.top
                 anchors.left: parent.left
 
-                text: name
+                Label {
+                    id: nameLabel
+
+                    text: name
+                }
+
+                Label {
+                    id: raceLabel
+
+                    visible: delegateRoot.ListView.isCurrentItem ? true : false
+
+                    text: characterTranslator.raceToString(race)
+                }
             }
 
-            Label {
-                id: classLabel
-
+            Column {
                 anchors.top: parent.top
                 anchors.right: parent.right
 
-                text: characterClass
-            }
+                Label {
+                    id: classLabel
 
+                    text: characterTranslator.classToString(characterClass)
+                }
+
+                Label {
+                    id: sexLabel
+
+                    visible: delegateRoot.ListView.isCurrentItem ? true : false
+
+                    text: characterTranslator.sexToString(sex)
+                }
+            }
         }
     }
 }

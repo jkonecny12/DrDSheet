@@ -104,3 +104,81 @@ void Character::setCharClass(Character::Class charClass)
 
     d->m_char_class = charClass;
 }
+
+QString Character::raceToString(Character::Race race)
+{
+    QString ret;
+
+    switch(race)
+    {
+    case Race::Dwarf:
+        ret = tr("Trpaslík");
+        break;
+    case Race::Elf:
+        ret = tr("Elf");
+        break;
+    case Race::Hobbit:
+        ret = tr("Hobit");
+        break;
+    case Race::Human:
+        ret = tr("Člověk");
+        break;
+    case Race::Kroll:
+        ret = tr("Kroll");
+        break;
+    default:
+        ret = tr("Neznámý");
+        break;
+    }
+
+    return ret;
+}
+
+QString Character::sexToString(Character::Sex sex)
+{
+    QString ret;
+
+    switch(sex)
+    {
+    case Sex::Female:
+        ret = tr("Žena");
+        break;
+    case Sex::Male:
+        ret = tr("Muž");
+        break;
+    default:
+        ret = tr("Neznámí");
+        break;
+    }
+
+    return ret;
+}
+
+QString Character::classToString(Character::Class charClass)
+{
+    QString ret;
+
+    switch(charClass)
+    {
+    case Class::Druid:
+        ret = tr("Druid");
+        break;
+    case Class::Hunter:
+        ret = tr("Hraničář");
+        break;
+    case Class::Mage:
+        ret = tr("Mág");
+        break;
+    case Class::Theurg:
+        ret = tr("Theurg");
+        break;
+    case Class::Thief:
+        ret = tr("Thief");
+        break;
+    case Class::Warrior:
+        ret = tr("Válečník");
+        break;
+    }
+
+    return ret;
+}
