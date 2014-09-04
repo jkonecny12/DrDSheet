@@ -178,6 +178,8 @@ QString Character::classToString(Character::Class charClass)
     case Class::Warrior:
         ret = tr("Válečník");
         break;
+    default:
+        ret = tr("Neznámý");
     }
 
     return ret;
