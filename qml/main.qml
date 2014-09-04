@@ -57,6 +57,10 @@ Window {
             anchors.fill: parent
 
             visible: false
+
+            onBack: {
+                rootItem.state = "CHARLIST"
+            }
         }
     }
 }
