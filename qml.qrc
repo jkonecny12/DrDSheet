@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file alias="/main.qml">qml/main.qml</file>
         <file alias="Characters/CharacterList.qml">qml/Characters/CharacterList.qml</file>
-        <file alias="ModifyCharacter/ModifyCharacter.qml">qml/ModifyCharacter/ModifyCharacter.qml</file>
+        <file alias="Characters/ModifyCharacter.qml">qml/Characters/ModifyCharacter.qml</file>
         <file alias="Attributes/AttributesList.qml">qml/Attributes/AttributesList.qml</file>
         <file alias="ModifyAttribute/ModifyAttribute.qml">qml/ModifyAttribute/ModifyAttribute.qml</file>
     </qresource>

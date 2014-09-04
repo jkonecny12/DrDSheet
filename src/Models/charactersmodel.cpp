@@ -93,3 +93,10 @@ QHash<int, QByteArray> CharactersModel::roleNames() const
 
     return roles;
 }
+
+Character *CharactersModel::getCharacter(int index)
+{
+    Q_D(CharactersModel);
+
+    return d->m_characters[index];
+}

@@ -9,6 +9,10 @@ import cz.ps.Managers 1.0
 Item {
     id: root
 
+    property int selectedCharacterIndex: charactersView.currentIndex
+
+    signal modifyCharacter
+
     ListView {
         id: charactersView
 
@@ -87,6 +91,46 @@ Item {
                     text: characterTranslator.sexToString(sex)
                 }
             }
+        }
+    }
+
+    RowLayout {
+        id: buttonsLayout
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+
+        height: 50
+
+        Button {
+            id: createNew
+
+            text: qsTr("Vytvořit")
+
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: modifyNew
+
+            text: qsTr("Upravit")
+
+            Layout.fillWidth: true
+
+            Component.onCompleted: {
+                modifyNew.clicked.connect(root.modifyCharacter)
+            }
+        }
+
+        Button {
+            id: deleteNew
+
+            text: qsTr("Smazat")
+
+            Layout.fillWidth: true
         }
     }
 }

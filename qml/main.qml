@@ -13,52 +13,50 @@ Window {
     height: 360
     color: "silver"
 
-    CharacterList {
-        id: charList
+    Item {
+        id: rootItem
 
-        anchors {
-            top: parent.top
-            bottom: buttonsLayout.top
-            left: parent.left
-            right: parent.right
+        anchors.fill: parent
+
+        state: "CHARLIST"
+
+        states: [
+            State {
+                name: "CHARLIST"
+                PropertyChanges {
+                    target: charListScreen
+                    visible: true
+                }
+            },
+
+            State {
+                name: "MODIFCHAR"
+                PropertyChanges {
+                    target: modifyCharacterScreen
+                    visible: true
+                }
+            }
+        ]
+
+        CharacterList {
+            id: charListScreen
+
+            anchors.fill: parent
+
+            visible: false
+
+            onModifyCharacter: {
+                rootItem.state = "MODIFCHAR"
+            }
+
         }
 
+        ModifyCharacter {
+            id: modifyCharacterScreen
+
+            anchors.fill: parent
+
+            visible: false
+        }
     }
-
-    RowLayout {
-        id: buttonsLayout
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-
-        height: 50
-
-        Button {
-            id: createNew
-
-            text: qsTr("Vytvořit")
-
-            Layout.fillWidth: true
-        }
-
-        Button {
-            id: modifyNew
-
-            text: qsTr("Upravit")
-
-            Layout.fillWidth: true
-        }
-
-        Button {
-            id: deleteNew
-
-            text: qsTr("Smazat")
-
-            Layout.fillWidth: true
-        }
-    }
-
 }
