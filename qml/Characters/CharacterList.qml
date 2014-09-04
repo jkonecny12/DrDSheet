@@ -9,9 +9,9 @@ import cz.ps.Managers 1.0
 Item {
     id: root
 
-    property int selectedCharacterIndex: charactersView.currentIndex
-
-    signal modifyCharacter
+    signal createNewCharacter
+    signal modifyCharacter(int index)
+    signal removeCharacter
 
     ListView {
         id: charactersView
@@ -111,6 +111,10 @@ Item {
             text: qsTr("Vytvořit")
 
             Layout.fillWidth: true
+
+            onClicked: {
+                root.createNewCharacter()
+            }
         }
 
         Button {
@@ -120,8 +124,8 @@ Item {
 
             Layout.fillWidth: true
 
-            Component.onCompleted: {
-                modifyNew.clicked.connect(root.modifyCharacter)
+            onClicked: {
+                root.modifyCharacter(charactersView.currentIndex)
             }
         }
 
@@ -131,6 +135,10 @@ Item {
             text: qsTr("Smazat")
 
             Layout.fillWidth: true
+
+            onClicked: {
+                root.removeCharacter()
+            }
         }
     }
 }
