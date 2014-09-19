@@ -9,17 +9,16 @@ import cz.ps.Managers 1.0
 Item {
     id: root
 
+    signal back
+
     anchors.fill: parent
 
-    focus: true
-
-    signal back
+    focus: visible
 
     Keys.onReleased: {
         if(event.key === Qt.Key_Back)
         {
             back()
-            console.log("back button catched")
             event.accepted = true
         }
     }
