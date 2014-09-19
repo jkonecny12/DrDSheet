@@ -15,10 +15,6 @@ Item {
         console.log("focus: " + focus)
     }
 
-    signal createNewCharacter
-    signal modifyCharacter(int index)
-    signal removeCharacter
-
     ListView {
         id: charactersView
 
@@ -96,54 +92,6 @@ Item {
 
                     text: characterTranslator.sexToString(sex)
                 }
-            }
-        }
-    }
-
-    RowLayout {
-        id: buttonsLayout
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-
-        height: 50
-
-        Button {
-            id: createNew
-
-            text: qsTr("Vytvořit")
-
-            Layout.fillWidth: true
-
-            onClicked: {
-                root.createNewCharacter()
-            }
-        }
-
-        Button {
-            id: modifyNew
-
-            text: qsTr("Upravit")
-
-            Layout.fillWidth: true
-
-            onClicked: {
-                root.modifyCharacter(charactersView.currentIndex)
-            }
-        }
-
-        Button {
-            id: deleteNew
-
-            text: qsTr("Smazat")
-
-            Layout.fillWidth: true
-
-            onClicked: {
-                root.removeCharacter()
             }
         }
     }

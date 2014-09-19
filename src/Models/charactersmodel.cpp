@@ -94,9 +94,35 @@ QHash<int, QByteArray> CharactersModel::roleNames() const
     return roles;
 }
 
+bool CharactersModel::removeRows(int row, int count, const QModelIndex &parent)
+{
+    Q_D(CharactersModel);
+
+    if(d->m_characters.count() <= (row + count))
+        return false;
+
+    beginRemoveRows(parent, row, row + count);
+
+    for(unsigned short i = 0; i < count; i++)
+    {
+        d->m_characters.removeAt(row);
+    }
+
+    endRemoveRows();
+
+    return true;
+}
+
 Character *CharactersModel::getCharacter(int index)
 {
     Q_D(CharactersModel);
 
     return d->m_characters[index];
+}
+
+void CharactersModel::removeCharacter(int index)
+{
+    Q_D(CharactersModel);
+
+    this->removeRow(index);
 }

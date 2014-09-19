@@ -28,7 +28,12 @@ public:
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
 
+    bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
+
     Q_INVOKABLE Character *getCharacter(int index);
+
+public slots:
+    void removeCharacter(int index);
 
 private:
     QScopedPointer<CharactersModelPrivate> d_ptr;

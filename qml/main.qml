@@ -5,13 +5,43 @@ import QtQuick.Layouts 1.1
 
 import "./Characters"
 
-Window {
+ApplicationWindow {
     id: root
 
     visible: true
     width: 360
     height: 360
     color: "silver"
+
+    menuBar: MenuBar {
+        id: mainMenuBar
+
+        Menu {
+            id: mainMenu
+
+            title: "Main menu"
+
+            MenuItem {
+                text: qsTr("Vytvořit")
+
+                triggered: {
+                    rootItem.state = "MODIFCHAR"
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Upravit")
+
+                triggered: {
+                    rootItem.state = "MODIFCHAR"
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Smazat")
+            }
+        }
+    }
 
     Item {
         id: rootItem
@@ -45,9 +75,9 @@ Window {
 
             visible: false
 
-            onModifyCharacter: {
-                rootItem.state = "MODIFCHAR"
-            }
+//            onModifyCharacter: {
+//               rootItem.state = "MODIFCHAR"
+//            }
 
         }
 
