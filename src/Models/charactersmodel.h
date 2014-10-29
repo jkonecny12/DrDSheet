@@ -4,6 +4,7 @@
 #include <QAbstractListModel>
 #include <QScopedPointer>
 
+class QJsonObject;
 class Character;
 
 class CharactersModelPrivate;
@@ -31,6 +32,9 @@ public:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) Q_DECL_OVERRIDE;
 
     Q_INVOKABLE Character *getCharacter(int index);
+
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json) const;
 
 public slots:
     void removeCharacter(int index);

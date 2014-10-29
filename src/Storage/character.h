@@ -5,6 +5,7 @@
 #include <QScopedPointer>
 
 class CharacterPrivate;
+class QJsonObject;
 class Character : public QObject
 {
     Q_OBJECT
@@ -67,6 +68,9 @@ public:
     Q_INVOKABLE QString raceToString(Race race);
     Q_INVOKABLE QString sexToString(Sex sex);
     Q_INVOKABLE QString classToString(Class charClass);
+
+    void read(const QJsonObject &json);
+    void write(QJsonObject &json) const;
 
 signals:
     void nameChanged();

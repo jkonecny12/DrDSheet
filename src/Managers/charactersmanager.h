@@ -5,6 +5,7 @@
 #include <QScopedPointer>
 
 class CharactersModel;
+class QJsonObject;
 
 class CharactersManagerPrivate;
 class CharactersManager : public QObject
@@ -19,6 +20,12 @@ public:
     static void dropInstance();
 
     CharactersModel *model() const;
+
+    void readCharacters(const QJsonObject &json);
+    void writeCharacters(QJsonObject &json) const;
+
+    bool loadCharacters();
+    bool writeCharacters() const;
 
 signals:
     void modelChanged();

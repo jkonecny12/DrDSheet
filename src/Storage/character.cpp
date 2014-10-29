@@ -1,5 +1,15 @@
 #include "character.h"
 
+#include <QJsonObject>
+
+
+/*** Constants ***/
+
+#define JS_NAME "name"
+#define JS_RACE "race"
+#define JS_SEX "sex"
+#define JS_CHAR_CLASS "character_class"
+
 /*** PIMPL ***/
 
 class CharacterPrivate {
@@ -183,4 +193,24 @@ QString Character::classToString(Character::Class charClass)
     }
 
     return ret;
+}
+
+void Character::read(const QJsonObject &json)
+{
+    Q_D(Character);
+
+    d->m_name = json[JS_NAME].toString();
+    d->m_race = static_cast<Character::Race>(json[JS_RACE].toInt());
+    d->m_sex = static_cast<Character::Sex>(json[JS_SEX].toInt());
+    d->m_char_class = static_cast<Character::Class>(json[JS_CHAR_CLASS].toInt());
+}
+
+void Character::write(QJsonObject &json) const
+{
+    Q_D(const Character);
+
+    json[JS_NAME] = d->m_name;
+    json[JS_RACE] = static_cast<int>(d->m_race);
+    json[JS_SEX] = static_cast<int>(d->m_sex);
+    json[JS_CHAR_CLASS] = static_cast<int>(d->m_char_class);
 }

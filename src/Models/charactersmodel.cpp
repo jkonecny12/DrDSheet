@@ -2,33 +2,47 @@
 
 #include "../Storage/character.h"
 
+#include <QSharedPointer>
+#include <QJsonObject>
+#include <QJsonArray>
+
+/*** CONSTANTS ***/
+
+#define JS_CHARACTERS "characters"
+
 /*** PIMPL ***/
 
 class CharactersModelPrivate {
 public:
-    QList<Character *> m_characters;
+    QList<QSharedPointer<Character> > m_characters;
 
     CharactersModelPrivate(CharactersModel *q)
     {
-        m_characters.append(new Character("test", Character::Race::Elf,
-                                          Character::Sex::Male,
-                                          Character::Class::Druid,
-                                          q
-                                          )
+        m_characters.append(QSharedPointer<Character>(
+                                new Character("test", Character::Race::Elf,
+                                              Character::Sex::Male,
+                                              Character::Class::Druid,
+                                              q
+                                              )
+                                )
                             );
 
-        m_characters.append(new Character("test1", Character::Race::Human,
-                                          Character::Sex::Male,
-                                          Character::Class::Theurg,
-                                          q
-                                          )
+        m_characters.append(QSharedPointer<Character>(
+                                new Character("test1", Character::Race::Human,
+                                              Character::Sex::Male,
+                                              Character::Class::Theurg,
+                                              q
+                                              )
+                                )
                             );
 
-        m_characters.append(new Character("test2", Character::Race::Dwarf,
-                                          Character::Sex::Female,
-                                          Character::Class::Thief,
-                                          q
-                                          )
+        m_characters.append(QSharedPointer<Character>(
+                                new Character("test2", Character::Race::Dwarf,
+                                              Character::Sex::Female,
+                                              Character::Class::Thief,
+                                              q
+                                              )
+                                )
                             );
     }
 };
@@ -64,7 +78,7 @@ QVariant CharactersModel::data(const QModelIndex &index, int role) const
         if(d->m_characters.count() <= index.row())
             return QVariant();
 
-        Character *character = d->m_characters[index.row()];
+        QSharedPointer<Character> character = d->m_characters[index.row()];
 
         switch(role)
         {
@@ -117,12 +131,44 @@ Character *CharactersModel::getCharacter(int index)
 {
     Q_D(CharactersModel);
 
-    return d->m_characters[index];
+    return d->m_characters[index].data();
+}
+
+void CharactersModel::read(const QJsonObject &json)
+{
+    Q_D(CharactersModel);
+
+    d->m_characters.clear();
+
+    QJsonArray jsArray = json[JS_CHARACTERS].toArray();
+
+    for(int i = 0; i < jsArray.count(); i++)
+    {
+        QJsonObject js_char = jsArray.at(i).toObject();
+        QSharedPointer<Character> character(new Character());
+        character->read(js_char);
+        d->m_characters.append(character);
+    }
+}
+
+void CharactersModel::write(QJsonObject &json) const
+{
+    Q_D(const CharactersModel);
+
+    QJsonArray jsCharArray;
+
+    foreach(auto character, d->m_characters)
+    {
+        QJsonObject jsChar;
+        character->write(jsChar);
+
+        jsCharArray.append(jsChar);
+    }
+
+    json[JS_CHARACTERS] = jsCharArray;
 }
 
 void CharactersModel::removeCharacter(int index)
 {
-    Q_D(CharactersModel);
-
     this->removeRow(index);
 }
